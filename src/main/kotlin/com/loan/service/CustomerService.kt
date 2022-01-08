@@ -2,7 +2,8 @@ package com.loan.service
 
 import com.loan.controller.request.CustomerRequest
 import com.loan.dto.CustomerResponse
-import com.loan.exception.NotFoundException
+import com.loan.entity.Customer
+import com.loan.exception.ValidationException
 import com.loan.mapper.CustomerRequestMapper
 import com.loan.mapper.CustomerResponseMapper
 import com.loan.repository.CustomerRepository
@@ -22,10 +23,10 @@ class CustomerService(
         return customerResponseMapper.map(customerMapper)
     }
 
-    fun findClientById(id: Long): CustomerResponse {
-        val customer = customerRepository.findById(id)
-            .orElseThrow{ NotFoundException(notFoundMessage) }
-        return customerResponseMapper.map(customer)
+    fun findClientById(id: Long): Customer {
+        return customerRepository.findById(id)
+            .orElseThrow{ ValidationException(notFoundMessage) }
+//        return customerResponseMapper.map(customer)
     }
 
 }

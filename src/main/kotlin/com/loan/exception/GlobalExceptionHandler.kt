@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest
 @RestControllerAdvice
 class GlobalExceptionHandler {
 
-    @ExceptionHandler(NotFoundException::class)
+    @ExceptionHandler(ValidationException::class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     fun handleNotFound(
-        exception: NotFoundException,
+        exception: ValidationException,
         request: HttpServletRequest
     ): ErrorView {
         return ErrorView(
@@ -41,17 +41,13 @@ class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException::class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     fun handleValidationError(
-        exception: MethodArgumentNotValidException,
+        exception: ValidationException,
         request: HttpServletRequest
     ): ErrorView {
-        val errorMessage = HashMap<String, String?>()
-        exception.bindingResult.fieldErrors.forEach{
-                e -> errorMessage.put(e.field, e.defaultMessage)
-        }
         return ErrorView(
-            status = HttpStatus.BAD_REQUEST.value(),
-            error = HttpStatus.BAD_REQUEST.name,
-            message = errorMessage.toString(),
+            status = HttpStatus.INTERNAL_SERVER_ERROR.value(),
+            error = HttpStatus.INTERNAL_SERVER_ERROR.name,
+            message = exception.message,
             path = request.servletPath
         )
     }
