@@ -1,24 +1,25 @@
 package com.loan.entity
 
 import com.fasterxml.jackson.annotation.JsonFormat
+import com.loan.enums.StatusLoan
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.time.LocalDateTime
 import javax.persistence.*
 
-@Entity
+@Entity(name = "loan")
 data class Loan(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
-    var code: String? = "TQI" + (Math.random() * 1000).toInt(),
-    val amount: BigDecimal,
-    val parcel: Int,
-    val firstParcelDate: LocalDate,
+    var id: Int? = null,
+    var code: String? = null,
+    var amount: BigDecimal,
+    var parcel: Int,
+    var firstParcelDate: LocalDate,
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     var loanApplicationDate: LocalDateTime  = LocalDateTime.now(),
     @Enumerated(EnumType.STRING)
-    var status: StatusLoan = StatusLoan.SENT,
+    var status: StatusLoan?,
     @ManyToOne
     @JoinColumn(name = "customer_id")
     val customer: Customer? = null

@@ -6,7 +6,7 @@ import java.math.BigDecimal
 import java.time.LocalDate
 
 data class CustomerResponse(
-    val id: Long?,
+    val id: Int?,
     val name: String,
     val email: String,
     val password: String,

@@ -1,7 +1,7 @@
 package com.loan.dto
 
 import com.fasterxml.jackson.annotation.JsonAlias
-import com.loan.entity.StatusLoan
+import com.loan.enums.StatusLoan
 import java.math.BigDecimal
 
 data class ListLoans(

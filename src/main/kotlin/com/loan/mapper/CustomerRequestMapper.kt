@@ -2,6 +2,7 @@ package com.loan.mapper
 
 import com.loan.controller.request.CustomerRequest
 import com.loan.entity.Customer
+import com.loan.enums.StatusLoan
 import org.springframework.stereotype.Component
 
 @Component

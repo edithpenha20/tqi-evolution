@@ -3,12 +3,11 @@ package com.loan.entity
 import com.fasterxml.jackson.annotation.JsonAlias
 import javax.persistence.*
 
-@Entity
-@Table(name = "endereco")
+@Entity(name = "address")
 data class Address(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long?,
+    val id: Int?,
     val cep: String,
     @field:JsonAlias("rua")
     val street: String,

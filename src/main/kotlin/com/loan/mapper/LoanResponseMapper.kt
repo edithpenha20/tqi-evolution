@@ -16,7 +16,7 @@ class LoanResponseMapper: Mapper<Loan, LoanResponse> {
             parcel = l.parcel,
             firstParcelDate = l.firstParcelDate,
             loanApplicationDate = l.loanApplicationDate,
-            status = l.status
+            status = l.status!!
         )
     }
 }

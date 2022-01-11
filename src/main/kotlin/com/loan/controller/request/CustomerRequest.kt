@@ -30,7 +30,6 @@ data class CustomerRequest(
     val phone: String,
     @field:JsonAlias("renda_mensal")
     val monthlyIncome: BigDecimal,
-
     @field:JsonAlias("endereco")
     val address: Address
 ) {

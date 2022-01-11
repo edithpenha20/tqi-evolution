@@ -10,4 +10,5 @@ class LoanApplication
 
 fun main(args: Array<String>) {
 	runApplication<LoanApplication>(*args)
+
 }

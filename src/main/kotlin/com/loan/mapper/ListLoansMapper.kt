@@ -11,7 +11,7 @@ class ListLoansMapper: Mapper<Loan, ListLoans> {
             code = l.code,
             amount = l.amount,
             parcel = l.parcel,
-            status = l.status
+            status = l.status!!
         )
     }
 }

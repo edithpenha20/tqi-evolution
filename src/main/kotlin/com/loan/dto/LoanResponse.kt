@@ -2,13 +2,13 @@ package com.loan.dto
 
 import com.fasterxml.jackson.annotation.JsonAlias
 import com.fasterxml.jackson.annotation.JsonFormat
-import com.loan.entity.StatusLoan
+import com.loan.enums.StatusLoan
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.time.LocalDateTime
 
 class LoanResponse(
-    val id: Long?,
+    val id: Int?,
     @field:JsonAlias("codigo_emprestimo")
     val code: String?,
     val email: String?,
@@ -24,6 +24,6 @@ class LoanResponse(
     @field:JsonAlias("data_solicitacao_emprestimo")
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     val loanApplicationDate: LocalDateTime,
-    val status: StatusLoan
+    var status: StatusLoan
 ) {
 }
